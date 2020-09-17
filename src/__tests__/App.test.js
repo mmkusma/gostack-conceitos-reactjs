@@ -21,7 +21,14 @@ describe("App component", () => {
   it("should be able to add new repository", async () => {
     const { getByText, getByTestId } = render(<App />);
 
-    apiMock.onGet("repositories").reply(200, []);
+    apiMock.onGet("repositories").reply(200, [
+      {
+        id: "124",
+        url: "https://github.com/josepholiveira",
+        title: "Desafio Maicom",
+        techs: ["React", "Node.js"],
+      },
+    ]);
 
     apiMock.onPost("repositories").reply(200, {
       id: "123",
